@@ -1,0 +1,150 @@
+Script started on 2022-12-06 16:31:47-05:00
+
+
+Which words are the most frequent in that tweet text? Are they what you expected based on the frequent hashtags from previous assignments?
+
+The most frequent words were very similar to the frequent words that had been found in previous assignments. The words were should, happy, thought, be, camp, https, think, could, war.
+
+]0;shamika@sjsu:/mnt/scratch/shamika[shamika@sjsu shamika]$ git init
+Reinitialized existing Git repository in /mnt/scratch/shamika/.git/
+]0;shamika@sjsu:/mnt/scratch/shamika[shamika@sjsu shamika]$ mkdir A6
+]0;shamika@sjsu:/mnt/scratch/shamika[shamika@sjsu shamika]$ cp downloaded_tweets_extend_original_nolf2_NOBOT.tsv a[KA6
+]0;shamika@sjsu:/mnt/scratch/shamika[shamika@sjsu shamika]$ cp downloaded_tweets_extend_original_nolf2_NOBOT.tsv A6[1P[1P[1P[1P[1P[1P[1P[1P[1P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+]0;shamika@sjsu:/mnt/scratch/shamika[shamika@sjsu shamika]$ cd A6
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ ls
+downloaded_tweets_extend_nolf2_NOBOT.tsv  downloaded_tweets_extend_original_nolf2_NOBOT.tsv
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ grep replied_to downloaded_tweets_extend_nolf2_NOBOT.tsv > downloaded_tweets_extend_nolf22_NOBOT_replies.tsv
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ grep replied_to downloaded_tweets_extend_original_nolf2_NOBOT.tsv > downloaded_tweets_exttend_original_nolf2_NOBOT_replies.tsv
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ ls
+downloaded_tweets_extend_nolf2_NOBOT_replies.tsv
+downloaded_tweets_extend_nolf2_NOBOT.tsv
+downloaded_tweets_extend_original_nolf2_NOBOT_replies.tsv
+downloaded_tweets_extend_original_nolf2_NOBOT.tsv
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ awk -F "\t" '{print $6}' downloaded_tweets_extend_original_nolf2_NOBOT_replies.tsv > downnloaded_tweets_extend_original_nolf2_NOBOT_replies_6.tsv
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ awk -F "\t" '{print $6}' downloaded_tweets_extend_nolf2_NOBOT_replies.tsv > downloaded_twweets_extend_nolf2_NOBOT_replies_6.tsv
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ ls
+downloaded_tweets_extend_nolf2_NOBOT_replies_6.tsv
+downloaded_tweets_extend_nolf2_NOBOT_replies.tsv
+downloaded_tweets_extend_nolf2_NOBOT.tsv
+downloaded_tweets_extend_original_nolf2_NOBOT_replies_6.tsv
+downloaded_tweets_extend_original_nolf2_NOBOT_replies.tsv
+downloaded_tweets_extend_original_nolf2_NOBOT.tsv
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ cat downloaded_tweets_extend_nolf2_NOBOT_replies_6.tsv downloaded_tweets_extend_original__nolf2_NOBOT_replies_6.tsv |sort |uniq -c |sort -nr -k1 |head
+     47 19739126
+     45 3453306553
+     29 956266072440635392
+     27 29447428
+     25 492736486
+     21 1236324668640047105
+     20 90732175
+     20 21525682
+     18 26347394
+     18 1238370241169616897
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ cat downloaded_tweets_extend_nolf2_NOBOT_replies_6.tsv [K downloaded_tweets_extend_original__nolf2_NOBOT_replies_6.tsv |sort |uniq -c |sort -nr -k1 > infl_users.txt
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ sort infl_users.txt |uniq |wc
+   5196   10392  111792
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ for i in `cat infl_users.txt`; do awk -v VAR=$i '($6=VAR) {print $2}' downloaded_tweets_eextend_nolf2_NOBOT_replies.tsv ; done >> replies_influsers.txt
+  ^C
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ ls
+downloaded_tweets_extend_nolf2_NOBOT_replies_6.tsv
+downloaded_tweets_extend_nolf2_NOBOT_replies.tsv
+downloaded_tweets_extend_nolf2_NOBOT.tsv
+downloaded_tweets_extend_original_nolf2_NOBOT_replies_6.tsv
+downloaded_tweets_extend_original_nolf2_NOBOT_replies.tsv
+downloaded_tweets_extend_original_nolf2_NOBOT.tsv
+infl_users.txt
+replies_influsers.txt
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ ca[K[Kwc replies_influsers.txt 
+ 55967857  55967858 748566120 replies_influsers.txt
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ sort replies_influsers.txt |uniq |wc
+     72      72    1045
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ for i in `cat replies_influsers.txt`; do awk -v VAR=$i '($2=VAR) {print $6}' downloaded_ttweets_extend_nolf2_NOBOT_replies.tsv ; done >> a6_q3.txt
+^C
+
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ 
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ ls
+a6_q3.txt
+downloaded_tweets_extend_nolf2_NOBOT_replies_6.tsv
+downloaded_tweets_extend_nolf2_NOBOT_replies.tsv
+downloaded_tweets_extend_nolf2_NOBOT.tsv
+downloaded_tweets_extend_original_nolf2_NOBOT_replies_6.tsv
+downloaded_tweets_extend_original_nolf2_NOBOT_replies.tsv
+downloaded_tweets_extend_original_nolf2_NOBOT.tsv
+infl_users.txt
+replies_influsers.txt
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ for i in `cat replies_influsers.txt`; do awk -v VAR=$i '($2=VAR) {print $6}' downloaded_ttweets_extend_nolf2_NOBOT_replies.tsv ; done >> a6_q3.txt
+^C
+
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ 
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ ls
+a6_q3.txt
+downloaded_tweets_extend_nolf2_NOBOT_replies_6.tsv
+downloaded_tweets_extend_nolf2_NOBOT_replies.tsv
+downloaded_tweets_extend_nolf2_NOBOT.tsv
+downloaded_tweets_extend_original_nolf2_NOBOT_replies_6.tsv
+downloaded_tweets_extend_original_nolf2_NOBOT_replies.tsv
+downloaded_tweets_extend_original_nolf2_NOBOT.tsv
+infl_users.txt
+replies_influsers.txt
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ lsfor i in `cat replies_influsers.txt`; do awk -v VAR=$i '($2=VAR) {print $6}' downloaded_ttweets_extend_nolf2_NOBOT_replies.tsv ; done >> a6_q3.txt[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[58Psort a6_q3.txt |sort |uniq |wc
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+      4       4      87
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ awk -F "\t" '{print $8}' downloaded_tweets_extend_original_nolf2_NOBOT.tsv >>text_nolf.txxt[K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kawk '{print $3}' downloaded_tweets_extend_nolf2_NOBOT_replies.tsv |sort |uniq -c |sort -nnr -k 1 |head
+    212 2022-03-04
+    145 2022-02-23
+    117 2022-02-04
+    116 2022-02-18
+    114 2022-04-08
+    110 2022-03-25
+    105 2022-03-11
+    104 2022-04-23
+     95 2022-04-02
+     81 2022-04-29
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ awk '{print $3}' downloaded_tweets_extend_original_nolf2_NOBOT_replies.tsv |sort |uniq -cc |sort -nr -k 1 |head
+     46 2022-02-26
+     31 2022-02-24
+     30 2022-02-27
+     29 2022-01-28
+     26 2022-03-08
+     26 2022-01-25
+     25 2022-04-17
+     25 2022-04-05
+     25 2022-02-25
+     25 2022-01-03
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ sed -E 's/(and |is |I |for |or |of |to |in |at |it |but |so |the |that |a |as |these |theey |on |are |you |with |can)/,/g' text_nolf.txt > text.txt
+sed: can't read text_nolf.txt: No such file or directory
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ awk -F "\t" '{print $8}' downloaded_tweets_extend_original_nolf2_NOBOT.tsv >>text_nolf.txxt
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ awk -F "\t" '{print $8}' downloaded_tweets_extend_original_nolf2_NOBOT.tsv >>text_nolf.txxt[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csed -E 's/(and |is |I |for |or |of |to |in |at |it |but |so |the |that |a |as |these |they |on |are |you |with |can)/,/g' text_nolf.txt > text.txt
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ tr -c '[:alnum:]' '[\n*]' < text.txt |sort | uniq -c | sort -nr | head > popular.txt
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ ls
+a6_q3.txt
+downloaded_tweets_extend_nolf2_NOBOT_replies_6.tsv
+downloaded_tweets_extend_nolf2_NOBOT_replies.tsv
+downloaded_tweets_extend_nolf2_NOBOT.tsv
+downloaded_tweets_extend_original_nolf2_NOBOT_replies_6.tsv
+downloaded_tweets_extend_original_nolf2_NOBOT_replies.tsv
+downloaded_tweets_extend_original_nolf2_NOBOT.tsv
+infl_users.txt
+popular.txt
+replies_influsers.txt
+text_nolf.txt
+text.txt
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ vi popular.txt 
+[?2004h[?1049h[22;0;0t[?1h=[?2004h[1;64r[?12h[?12l[27m[23m[29m[m[H[2J[?25l[64;1H"popular.txt" 10L, 110C[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[1;2H520318
+  17911 thought
+  15216 could
+  15164 https
+   6628 should
+   3444 how
+   3182 war
+   2906 camp
+   2858 think
+   2695 be
+[94m~                                                                                                          [12;1H~                                                                                                          [13;1H~                                                                                                          [14;1H~                                                                                                          [15;1H~                                                                                                          [16;1H~                                                                                                          [17;1H~                                                                                                          [18;1H~                                                                                                          [19;1H~                                                                                                          [20;1H~                                                                                                          [21;1H~                                                                                                          [22;1H~                                                                                                          [23;1H~                                                                                                          [24;1H~                                                                                                          [25;1H~                                                                                                          [26;1H~                                                                                                          [27;1H~                                                                                                          [28;1H~                                                                                                          [29;1H~                                                                                                          [30;1H~                                                                                                          [31;1H~                                                                                                          [32;1H~                                                                                                          [33;1H~                                                                                                          [34;1H~                                                                                                          [35;1H~                                                                                                          [36;1H~                                                                                                          [37;1H~                                                                                                          [38;1H~                                                                                                          [39;1H~                                                                                                          [40;1H~                                                                                                          [41;1H~                                                                                                          [42;1H~                                                                                                          [43;1H~                                                                                                          [44;1H~                                                                                                          [45;1H~                                                                                                          [46;1H~                                                                                                          [47;1H~                                                                                                          [48;1H~                                                                                                          [49;1H~                                                                                                          [50;1H~                                                                                                          [51;1H~                                                                                                          [52;1H~                                                                                                          [53;1H~                                                                                                          [54;1H~                                                                                                          [55;1H~                                                                                                          [56;1H~                                                                                                          [57;1H~                                                                                                          [58;1H~                                                                                                          [59;1H~                                                                                                          [60;1H~                                                                                                          [61;1H~                                                                                                          [62;1H~                                                                                                          [63;1H~                                                                                                          [m[64;90H1,1[11CAll[1;1H[?25h[27m[23m[29m[m[H[2J[?25l[1;2H520318
+ 
+[94m~                                                                                                          [12;1H~                                                                                                          [13;1H~                                                                                                          [14;1H~                                                                                                          [15;1H~                                                                                                          [16;1H~                                                                                                          [17;1H~                                                                                                          [18;1H~                                                                                                          [19;1H~                                                                                                          [20;1H~                                                                                                          [21;1H~                                                                                                          [22;1H~                                                                                                          [23;1H~                                                                                                          [24;1H~                                                                                                          [25;1H~                                                                                                          [26;1H~                                                                                                          [27;1H~                                                                                                          [28;1H~                                                                                                          [29;1H~                                                                                                          [30;1H~                                                                                                          [31;1H~                                                                                                          [32;1H~                                                                                                          [33;1H~                                                                                                          [34;1H~                                                                                                          [35;1H~                                                                                                          [36;1H~                                                                                                          [37;1H~                                                                                                          [38;1H~                                                                                                          [39;1H~                                                                                                          [40;1H~                                                                                                          [41;1H~                                                                                                          [42;1H~                                                                                                          [43;1H~                                                                                                          [44;1H~                                                                                                          [45;1H~                                                                                                          [46;1H~                                                                                                          [47;1H~                                                                                                          [48;1H~                                                                                                          [49;1H~                                                                                                          [50;1H~                                                                                                          [51;1H~                                                                                                          [52;1H~                                                                                                          [53;1H~                                                                                                          [54;1H~                                                                                                          [55;1H~                                                                                                          [56;1H~                                                                                                          [57;1H~                                                                                                          [58;1H~                                                                                                          [59;1H~                                                                                                          [60;1H~                                                                                                          [61;1H~                                                                                                          [62;1H~                                                                                                          [63;1H~                                                                                                          [m[64;90H1,1[11CAll"popular.txt" 10L, 110C[1;1H[?25h[?25l[64;80H~@k[1;1H[64;80H   [1;2H[64;92H2[1;2H[?25h[?25l[64;80H~@k[1;2H[64;80H   [1;3H[64;92H3[1;3H[?25h[?25l[64;80H~@k[1;3H[64;80H   [1;4H[64;92H4[1;4H[?25h[?25l[64;80H~@k[1;4H[64;80H   [1;5H[64;92H5[1;5H[?25h[?25l[64;80H~@k[1;5H[64;80H   [1;6H[64;92H6[1;6H[?25h[?25l[64;80H~@k[1;6H[64;80H   [1;7H[64;92H7[1;7H[?25h[?25l[64;80H~@k[1;7H[64;80H   [1;8H[64;92H8[1;8H[?25h[?25l[64;80H~@k[1;8H[64;80H   [1;8H[?25h[?25l[64;80Hi[1;8H[64;80H [1;8H[64;1H[1m-- INSERT --[m[64;13H[K[64;90H1,8[11CAll[1;8H[?25h[?25l[64;92H9[1;9H[?25h[?25ly[64;92H10[1;10H[?25h[?25le[64;93H1[1;11H[?25h[?25lt[64;93H2[1;12H[?25h[?25l[64;93H3[1;13H[?25h[?25l\[64;93H4[1;14H[?25h[?25l [64;93H3[1;13H[?25h[?25l[64;93H2[1;12H[?25h[?25l\[64;93H3[1;13H[?25h[?25l [64;93H2[1;12H[?25h[?25l [64;93H1[1;11H[?25h[?25l [64;93H0[1;10H[?25h[?25l [64;92H9 [1;9H[?25h[?25lh[64;92H10[1;10H[?25h[?25la[64;93H1[1;11H[?25h[?25lr[64;93H2[1;12H[?25h[?25ld[64;93H3[1;13H[?25h[?25l[64;93H2[1;12H[?25h[?25l[64;90H2,10[2;10H[?25h[?25la[64;93H1[2;11H[?25h[?25lk[64;93H2[2;12H[?25h[?25le[64;93H3[2;13H[?25h[?25l[64;90H3,11[3;11H[?25h[?25lp[64;93H2[3;12H[?25h[?25l[64;90H4[4;12H[?25h[?25l[64;90H5,10[5;10H[?25h[?25la[64;93H1[5;11H[?25h[?25ln[64;93H2[5;12H[?25h[?25l[5;11H[K[64;93H1[5;11H[?25h[?25ld[64;93H2[5;12H[?25h[?25l[64;90H6,10[6;10H[?25h[?25la[64;93H1[6;11H[?25h[?25lp[64;93H2[6;12H[?25h[?25lp[64;93H3[6;13H[?25h[?25ly[64;93H4[6;14H[?25h[?25l[64;90H7,12[7;12H[?25h[?25l[64;93H1[7;11H[?25h[?25l[64;93H0[7;10H[?25h[?25l[64;92H9 [7;9H[?25h[?25lcamp[64;92H10[7;10H[?25h[?25lhamp[64;93H1[7;11H[?25h[?25l[64;90H8[8;11H[?25h[?25lo[64;93H2[8;12H[?25h[?25lu[64;93H3[8;13H[?25h[?25lg[64;93H4[8;14H[?25h[?25lh[64;93H5[8;15H[?25h[?25lt[64;93H6[8;16H[?25h[?25l[64;90H9,12[9;12H[?25h[64;1H[K[9;11H[?25l[64;80H^[[9;11H[64;80H  [9;12H[64;90H9,11[10CAll[9;11H[?25h[?25l[64;80H:[9;11H[64;80H[K[64;1H:[?2004h[?25hw[?25l[?25hq[?25l[?25h[?25l[?2004l"popular.txt" 10L, 132C written
+[?2004l[?1l>[?25h[?1049l[23;0;0t]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ ^C
+]0;shamika@sjsu:/mnt/scratch/shamika/A6[shamika@sjsu A6]$ exit
+
+Script done on 2022-12-09 16:56:50-05:00
